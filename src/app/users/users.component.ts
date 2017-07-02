@@ -15,16 +15,15 @@ import 'rxjs/add/operator/skip';
 export class UsersComponent implements OnInit {
   user$: Observable<User[]>;
   constructor(private _store: Store<ApplicationState>) {
-    console.log(this.user$ + 'LOG');
-
-    this.user$ = _store.select(state => state.usersStore.users);
-  /*  this._store
+    this.user$ = _store.select('users');
+/*    this._store
      .skip(1)
      .subscribe(
-     state => console.log(' SUB ' + state.usersStore )
+     state => this.user$ = (state.usersStore.users)
      );*/
      console.log('---------constructor---------');
-     console.log(this.user$)
+    console.log(this.user$ + 'LOG');
+
 
   }
 
@@ -33,11 +32,11 @@ export class UsersComponent implements OnInit {
     this._store.dispatch(new LoadUsersAction());
     console.log('----------dispatching---------');
 
-  /*  this._store
+    this._store
       .skip(1)
       .subscribe(
       state => console.log(' SUB ' + state )
-    )*/
+    )
   }
 
 }

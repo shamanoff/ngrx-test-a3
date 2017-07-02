@@ -12,8 +12,18 @@ import { UserComponent } from './users/user.component';
 import {DbService} from './services/db.service';
 import {LoadUsersEffectService} from './store/load-users-effect.service';
 import {EffectsModule} from '@ngrx/effects';
-import {INITIAL_APP_STATE} from "./store/application-state";
-
+import {AngularFireModule} from 'angularfire2';
+import {FireService} from './services/fire.service';
+import {INITIAL_APP_STATE} from './store/application-state';
+import {AngularFireDatabaseModule} from "angularfire2/database";
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDYKHWgd09uq3NRIKx5Z8v8Un94pUcN1v0',
+  authDomain: 'magazin-eb336.firebaseapp.com',
+  databaseURL: 'https://magazin-eb336.firebaseio.com',
+  projectId: 'magazin-eb336',
+  storageBucket: 'magazin-eb336.appspot.com',
+  messagingSenderId: '886636162748'
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +36,12 @@ import {INITIAL_APP_STATE} from "./store/application-state";
     HttpModule,
     StoreModule.provideStore(reducer, INITIAL_APP_STATE),
     EffectsModule.run(LoadUsersEffectService),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+
   ],
-  providers: [DbService],
+  providers: [DbService, FireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
