@@ -1,4 +1,5 @@
 import {User} from '../model/user';
+
 export interface UsersStore {
   users: User[];
 }

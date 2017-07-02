@@ -1,4 +1,5 @@
 import {INITIAL_USERS_STORE_STATE, UsersStore} from './users-store';
+
 export interface ApplicationState {
   usersStore: UsersStore;
 }

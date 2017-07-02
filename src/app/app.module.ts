@@ -12,6 +12,7 @@ import { UserComponent } from './users/user.component';
 import {DbService} from './services/db.service';
 import {LoadUsersEffectService} from './store/load-users-effect.service';
 import {EffectsModule} from '@ngrx/effects';
+import {INITIAL_APP_STATE} from "./store/application-state";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {EffectsModule} from '@ngrx/effects';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore(reducer),
+    StoreModule.provideStore(reducer, INITIAL_APP_STATE),
     EffectsModule.run(LoadUsersEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
