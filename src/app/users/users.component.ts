@@ -17,26 +17,14 @@ export class UsersComponent implements OnInit {
   user$: Observable<User[]>;
 
   constructor(private _store: Store<ApplicationState>) {
-    this.user$ = _store
-      .skip(1)
-      .map(this.uName);
-  _store.subscribe(
-    state => console.log('Log ', state)
-  );
-     console.log('---------constructor---------');
-    console.log(typeof this.user$);
+    this.user$ = _store.select('usersStore');
+    _store.subscribe(
+      state => console.log('Log ', state.usersStore)
+    );
   }
-
- uName(state: ApplicationState){
-    if(!state.usersStore.users){
-      return "";
-    }
-    return state.usersStore.users;
- }
 
   ngOnInit() {
     this._store.dispatch(new LoadUsersAction());
-    console.log('----------dispatching---------');
 
   }
 

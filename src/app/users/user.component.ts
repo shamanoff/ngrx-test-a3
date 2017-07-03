@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {User} from "../model/user";
 
 @Component({
   selector: 'user',
   template: `
-    <h3>user work</h3>
-  <h1>{{user.name}}</h1>
+  <h4>User Name: {{user.name }}</h4>
+    <p>Id: {{user.id}}</p>
   `,
   styles: [`
   `]
