@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {LoadUsersAction} from '../store/actions';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../model/user';
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 import 'rxjs/add/operator/skip';
 
 @Component({
@@ -15,28 +15,27 @@ import 'rxjs/add/operator/skip';
 export class UsersComponent implements OnInit {
   user$: Observable<User[]>;
   constructor(private _store: Store<ApplicationState>) {
-    this.user$ = _store.select('users');
-/*    this._store
-     .skip(1)
-     .subscribe(
-     state => this.user$ = (state.usersStore.users)
-     );*/
+    this.user$ = _store
+      .skip(1)
+      .map(state => state.usersStore.users);
+/*    this.user$ = _store
+      .select(
+        'users'
+      );*/
      console.log('---------constructor---------');
-    console.log(this.user$ + 'LOG');
-
-
+     console.log(this.user$ + 'TEST')
   }
+/*  mapU(state:ApplicationState){
+
+    return state.usersStore;
+  }*/
 
   ngOnInit() {
 
     this._store.dispatch(new LoadUsersAction());
     console.log('----------dispatching---------');
 
-    this._store
-      .skip(1)
-      .subscribe(
-      state => console.log(' SUB ' + state )
-    )
+
   }
 
 }

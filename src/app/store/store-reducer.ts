@@ -20,7 +20,7 @@ function handleLoadedUsersAction(state: ApplicationState, action: LoadedUsersAct
   const newState: ApplicationState = Object.assign({}, state);
   const users = action.payload;
   newState.usersStore = users;
-  console.log(JSON.stringify(newState.usersStore) + ' ---------SENDING--------- ');
+  // console.log(JSON.stringify(newState.usersStore) + ' ---------SENDING--------- ');
 
   return newState;
 }

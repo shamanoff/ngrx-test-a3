@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {UsersStore} from './users-store';
+// import {UsersStore} from './users-store';
 
 
 export const LOADED_USERS_ACTION = 'LOADED_USERS_ACTION';
