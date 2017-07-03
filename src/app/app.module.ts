@@ -16,6 +16,7 @@ import {AngularFireModule} from 'angularfire2';
 import {FireService} from './services/fire.service';
 import {INITIAL_APP_STATE} from './store/application-state';
 import {AngularFireDatabaseModule} from "angularfire2/database";
+import {storeReducer} from "./store/store-reducer";
 export const firebaseConfig = {
   apiKey: 'AIzaSyDYKHWgd09uq3NRIKx5Z8v8Un94pUcN1v0',
   authDomain: 'magazin-eb336.firebaseapp.com',
@@ -34,7 +35,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore(reducer, INITIAL_APP_STATE),
+    StoreModule.provideStore(storeReducer, INITIAL_APP_STATE),
     EffectsModule.run(LoadUsersEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     AngularFireModule.initializeApp(firebaseConfig),
