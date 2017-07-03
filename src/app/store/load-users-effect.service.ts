@@ -14,9 +14,7 @@ export class LoadUsersEffectService {
 
   @Effect() loadUser$: Observable<Action>= this._action$
     .ofType(LOAD_USERS_ACTION)
-    .switchMap(
-      () => this._db.getUsers()
-    )
+    .switchMap(() => this._db.getUsers())
     .map(usersData => new LoadedUsersAction(usersData));
 
 }
