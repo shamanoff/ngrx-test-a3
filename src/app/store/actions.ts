@@ -10,7 +10,7 @@ export const LOAD_USERS_ACTION = 'LOAD_USERS_ACTION';
 export class LoadedUsersAction implements Action {
 
   readonly type = LOADED_USERS_ACTION;
-  constructor(public payload ) {}
+  constructor(public payload? ) {}
 }
 export class LoadUsersAction implements Action {
 

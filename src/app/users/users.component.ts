@@ -18,7 +18,8 @@ export class UsersComponent implements OnInit {
 
   constructor(private _store: Store<ApplicationState>) {
     this.user$ = _store
-      .map(state => state.usersStore.users);
+      .skip(1)
+      .map(this.uName);
   _store.subscribe(
     state => console.log('Log ', state)
   );
@@ -26,12 +27,12 @@ export class UsersComponent implements OnInit {
     console.log(typeof this.user$);
   }
 
- // uName(state: ApplicationState){
- //    if(!state.usersStore.users){
- //      return "";
- //    }
- //    return state.usersStore.users;
- // }
+ uName(state: ApplicationState){
+    if(!state.usersStore.users){
+      return "";
+    }
+    return state.usersStore.users;
+ }
 
   ngOnInit() {
     this._store.dispatch(new LoadUsersAction());

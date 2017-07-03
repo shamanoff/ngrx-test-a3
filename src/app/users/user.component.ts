@@ -5,7 +5,7 @@ import {User} from "../model/user";
   selector: 'user',
   template: `
     <h3>user work</h3>
-  <h1>{{user.name | async }}</h1>
+  <h1>{{user.name}}</h1>
   `,
   styles: [`
   `]
