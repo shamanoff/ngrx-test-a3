@@ -13,22 +13,25 @@ import 'rxjs/add/operator/skip';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+
   user$: Observable<User[]>;
+
   constructor(private _store: Store<ApplicationState>) {
     this.user$ = _store
-      .map(this.uName);
+      .map(state => state.usersStore.users);
   _store.subscribe(
     state => console.log('Log ', state)
   );
      console.log('---------constructor---------');
+    console.log(typeof this.user$);
   }
 
- uName(state: ApplicationState){
-    if(!state.usersStore.users){
-      return "";
-    }
-    return state.usersStore.users;
- }
+ // uName(state: ApplicationState){
+ //    if(!state.usersStore.users){
+ //      return "";
+ //    }
+ //    return state.usersStore.users;
+ // }
 
   ngOnInit() {
     this._store.dispatch(new LoadUsersAction());
