@@ -12,4 +12,16 @@ export class FireService {
     return this.fireUser$;
   }
 
+  addUser(newUser){
+    return this.fireUser$.push(newUser);
+  }
+
+  editUser(key, user){
+    return this.fireUser$.update(key, user);
+  }
+
+  deleteUser(key){
+    return this.fireUser$.remove(key);
+  }
+
 }
