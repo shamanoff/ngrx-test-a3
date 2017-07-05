@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {ApplicationState, INITIAL_APP_STATE} from './application-state';
-import {LOADED_USERS_ACTION, LoadedUsersAction} from './actions';
+import {DELETE_USER_ACTION, DeletedUserAction, LOADED_USERS_ACTION, LoadedUsersAction} from './actions';
 
 // import {StoreData} from '../store-data';
 // import * as _ from 'lodash';
@@ -10,14 +10,24 @@ export function storeReducer(state: ApplicationState = INITIAL_APP_STATE,
   switch (action.type) {
     case LOADED_USERS_ACTION:
       return handleLoadedUsersAction(state, <any>action);
+    case DELETE_USER_ACTION:
+      return handleDeleteUserAction(state, <any>action);
     default:
+      ;
       return state;
   }
 }
 
-function handleLoadedUsersAction(state: ApplicationState, action: LoadedUsersAction): ApplicationState {
+function handleLoadedUsersAction(state: ApplicationState,
+                                 action: LoadedUsersAction): ApplicationState {
   const newState: ApplicationState = Object.assign({}, state);
   newState.usersStore = action.payload;
   // console.log(JSON.stringify(newState.usersStore) + ' ---------SENDING--------- ');
+  return newState;
+}
+function handleDeleteUserAction(state: ApplicationState,
+                                action: DeletedUserAction): ApplicationState {
+  const newState: ApplicationState = Object.assign({}, state);
+  // newState.usersStore = action.payload;
   return newState;
 }
