@@ -17,6 +17,8 @@ import {FireService} from './services/fire.service';
 import {INITIAL_APP_STATE} from './store/application-state';
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {storeReducer} from "./store/store-reducer";
+import {DeletedUserEffectService} from "./store/delete-user-effect.service";
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyDYKHWgd09uq3NRIKx5Z8v8Un94pUcN1v0',
   authDomain: 'magazin-eb336.firebaseapp.com',
@@ -37,6 +39,7 @@ export const firebaseConfig = {
     HttpModule,
     StoreModule.provideStore(storeReducer, INITIAL_APP_STATE),
     EffectsModule.run(LoadUsersEffectService),
+    EffectsModule.run(DeletedUserEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApplicationState} from '../store/application-state';
 import {Store} from '@ngrx/store';
-import {DeleteUserAction, EditUserAction, LoadUsersAction} from '../store/actions';
+import {DeletedUserAction, EditUserAction, LoadUsersAction} from '../store/actions';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../model/user';
 import * as _ from 'lodash';
@@ -28,10 +28,4 @@ export class UsersComponent implements OnInit {
 
   }
 
-  editUser(id: number, user: User){
-    this._store.dispatch(new EditUserAction());
-  }
-  deleteUser(id: number){
-    this._store.dispatch(new DeleteUserAction())
-  }
 }
